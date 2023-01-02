@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import data from "./data";
-
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
