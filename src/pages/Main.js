@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Row } from 'react-bootstrap';
 import axios from "axios";
+
 import Card from "../components/Card";
 
 function Main({ shoes, setShoes }) {
