@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function Main({ shoes, setShoes }) {
 	let [more, setMore] = useState(1);
-	let [loding, setLoding] = useState(false)
+	let [loading, setLoading] = useState(false)
 
 	return (
 		<>
@@ -19,8 +19,8 @@ function Main({ shoes, setShoes }) {
 					})}
 
 					{
-						loding == true ?
-							<div className='loding'>
+						loading == true ?
+							<div className='loading'>
 								로딩중입니다...
 							</div>
 							:
@@ -29,22 +29,22 @@ function Main({ shoes, setShoes }) {
 				</Row>
 			</Container>
 			<button onClick={() => {
-				setLoding(true);	//로딩중 UI띄우기
+				setLoading(true);	//로딩중 UI띄우기
 				<div>로딩중</div>
 				setMore(more = more + 1);
 				if (more > 3) {
 					alert('더 이상 상품이 없습니다.');
-					setLoding(false);	//로딩중 UI숨기기
+					setLoading(false);	//로딩중 UI숨기기
 				} else {
 					axios.get(`https://codingapple1.github.io/shop/data` + more + `.json`)
 						.then((data) => { //성공할때
 							let copy = [...shoes, ...data.data]
 							setShoes(copy);
-							setLoding(false);	//로딩중 UI숨기기
+							setLoading(false);	//로딩중 UI숨기기
 						})
 						.catch(() => {
 							console.log('실패함ㅅㄱ');
-							setLoding(false);	//로딩중 UI숨기기
+							setLoading(false);	//로딩중 UI숨기기
 						})
 				}
 			}}>버튼</button>
