@@ -1,8 +1,10 @@
 import './App.scss';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { useState } from "react";
-import data from "./data";
 import { Route, Routes, useNavigate } from "react-router-dom";
+
+import data from "./data";
+
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
@@ -13,7 +15,6 @@ function App() {
 	let navigate = useNavigate();
 
 	return (
-
 		<div className="App">
 			<Navbar bg="light" expand="lg">
 				<Container>
@@ -38,7 +39,6 @@ function App() {
 				</Route>
 				<Route path="*" element={<Notpage />} />
 			</Routes>
-
 		</div>
 	);
 }
