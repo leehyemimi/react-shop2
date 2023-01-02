@@ -27,7 +27,7 @@ function Detail({ shoes }) {
 		return () => {	//useEffect 실행되기전에 //cleanup function
 			clearTimeout(timer);
 		}
-	}, []); //1회만 코드 실행
+	}, []); //1회만 코드 실행1
 
 	useEffect(() => {
 		if (isNaN(num) == true) {
