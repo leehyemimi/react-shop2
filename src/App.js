@@ -8,6 +8,7 @@ import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
 import Notpage from "./pages/Notpage";
+import Cart from "./pages/Cart";
 
 function App() {
 	let [shoes, setShoes] = useState(data);
@@ -36,6 +37,7 @@ function App() {
 					<Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
 					<Route path="two" element={<div>생일기념 쿠폰 받기</div>} />
 				</Route>
+				<Route path="/cart" element={<Cart />} />
 				<Route path="*" element={<Notpage />} />
 			</Routes>
 		</div>
