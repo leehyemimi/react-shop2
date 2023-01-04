@@ -23,8 +23,9 @@ function App() {
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="me-auto">
 							<Nav.Link onClick={() => { navigate('/') }}>Home</Nav.Link>
-							<Nav.Link onClick={() => { navigate('/detail') }}>Detail</Nav.Link>
-							<Nav.Link onClick={() => { navigate('/event') }}>Event</Nav.Link>
+							{/* <Nav.Link onClick={() => { navigate('/detail') }}>Detail</Nav.Link> */}
+							<Nav.Link onClick={() => { navigate('/event/one') }}>Event</Nav.Link>
+							<Nav.Link onClick={() => { navigate('/cart') }}>Cart</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

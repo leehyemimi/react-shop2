@@ -1,9 +1,14 @@
 import { Nav } from 'react-bootstrap';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../store/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 function Detail({ shoes }) {
+	let navigate = useNavigate();
+	let dispatch = useDispatch()
+
 	let { id } = useParams();
 	// let item = shoes.find(function (x) {
 	// 	return x.id == id
@@ -61,7 +66,10 @@ function Detail({ shoes }) {
 						<h4 className="pt-5">{item.title}</h4>
 						<p>{item.content}</p>
 						<p>{item.price}</p>
-						<button className="btn btn-danger">주문하기</button>
+						<button className="btn btn-danger" onClick={() => {
+							navigate('/cart');
+							dispatch(addItem({ id: item.id, name: item.title, count: 1 }))
+						}}>주문하기</button>
 					</div>
 
 
