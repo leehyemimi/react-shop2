@@ -1,14 +1,16 @@
 import './App.scss';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import data from "./data";
 import Main from "./pages/Main";
-import Detail from "./pages/Detail";
+//import Detail from "./pages/Detail";
 import Event from "./pages/Event";
 import Notpage from "./pages/Notpage";
-import Cart from "./pages/Cart";
+//import Cart from "./pages/Cart";
+const Detail = lazy(() => import('./pages/Detail.js'))
+const Cart = lazy(() => import('./pages/Cart.js'))
 
 function App() {
 	let [shoes, setShoes] = useState(data);
@@ -30,17 +32,18 @@ function App() {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
-
-			<Routes>
-				<Route path="/" element={<Main shoes={shoes} setShoes={setShoes} />} />
-				<Route path="/detail/:id" element={<Detail shoes={shoes} />} />
-				<Route path="/event" element={<Event />}>
-					<Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
-					<Route path="two" element={<div>생일기념 쿠폰 받기</div>} />
-				</Route>
-				<Route path="/cart" element={<Cart />} />
-				<Route path="*" element={<Notpage />} />
-			</Routes>
+			<Suspense fallback={<div>로딩중입니다</div>}>
+				<Routes>
+					<Route path="/" element={<Main shoes={shoes} setShoes={setShoes} />} />
+					<Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+					<Route path="/event" element={<Event />}>
+						<Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
+						<Route path="two" element={<div>생일기념 쿠폰 받기</div>} />
+					</Route>
+					<Route path="/cart" element={<Cart />} />
+					<Route path="*" element={<Notpage />} />
+				</Routes>
+			</Suspense>
 		</div>
 	);
 }
